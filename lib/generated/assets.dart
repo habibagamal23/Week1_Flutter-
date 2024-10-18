@@ -5,5 +5,8 @@ class Assets {
   static const String assetsDs = 'assets/ds.jpg';
   static const String assetsLog = 'assets/log.jpg';
   static const String assetsOIP = 'assets/OIP.jpg';
+  static const String weekoneAssetsDs = 'assets/ds.jpg';
+  static const String weekoneAssetsLog = 'assets/log.jpg';
+  static const String weekoneAssetsOIP = 'assets/OIP.jpg';
 
 }

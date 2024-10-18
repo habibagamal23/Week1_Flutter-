@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'ModelItemfood.dart';
 
 class Myhome extends StatelessWidget {
-   Myhome({super.key});
+  Myhome({super.key});
   List<FoodItem> myfoods = [
-    FoodItem('bergur ', "it good ", "assets/OIP.jpg", '200'),
-    FoodItem('bergur1 ', "it good ", "assets/OIP.jpg", '200'),
-    FoodItem('bergur 2', "it good ", "assets/OIP.jpg", '200'),
-    FoodItem('bergur 3', "it good ", "assets/OIP.jpg", '200'),
-    FoodItem('bergur 4', "it good ", "assets/OIP.jpg", '200'),
-    FoodItem('bergur 4', "it good ", "assets/OIP.jpg", '200'),
-    FoodItem('bergur 5', "it good ", "assets/OIP.jpg", '200'),
-
+    FoodItem(
+        'Burger1 ', 'A tasty and delicious burger.', "assets/OIP.jpg", '250\$'),
+    FoodItem(
+        'Burger2 ', 'A tasty and delicious burger.', "assets/OIP.jpg", '250\$'),
+    FoodItem(
+        'Burger3 ', 'A tasty and delicious burger.', "assets/OIP.jpg", '250\$'),
+    FoodItem(
+        'Burger4 ', 'A tasty and delicious burger.', "assets/OIP.jpg", '250\$'),
   ];
 
   @override
@@ -22,7 +22,7 @@ class Myhome extends StatelessWidget {
         backgroundColor: Colors.deepPurple,
         toolbarHeight: 80,
         actions: [
-          CircleAvatar(
+          const CircleAvatar(
             radius: 20,
             backgroundImage: AssetImage(""),
           ),
@@ -33,71 +33,180 @@ class Myhome extends StatelessWidget {
               icon: Icon(Icons.logout))
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "wlcome Moahmed",
-            style: TextStyle(
-                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
-          ),
-          Text(
-            "choose your fevarite food ",
-            style: TextStyle(
-                color: Colors.grey,
-                fontWeight: FontWeight.normal,
-                fontSize: 20),
-          ),
-          Text(
-            "Cove ",
-            style: TextStyle(
-                color: Colors.deepPurple,
-                fontWeight: FontWeight.bold,
-                fontSize: 35),
-          ),
-          Container(
-            height: 300,
-
-            child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, i) {
-              return Container(
-                margin: EdgeInsets.all(10),
-                width: 200,
-                decoration: BoxDecoration(
-                    color: Colors.grey,
-                    borderRadius: BorderRadius.circular(30)),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                   ClipRRect(
-                     child:  Image.asset(myfoods[i].img! , width: 150,),
-                     borderRadius: BorderRadius.circular(30),
-                   ),
-                    SizedBox(height: 5,),
-                    Container(
-                      width: 150,
-                      child: Card(
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "wlcome Moahmed",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20),
+            ),
+            Text(
+              "choose your fevarite food ",
+              style: TextStyle(
+                  color: Colors.grey,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 20),
+            ),
+            Text(
+              "Cove ",
+              style: TextStyle(
+                  color: Colors.deepPurple,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 35),
+            ),
+            Container(
+              height: 350,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: myfoods.length,
+                  itemBuilder: (context, i) {
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/detailes',
+                            arguments: myfoods[i]);
+                      },
+                      child: Container(
+                        margin: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        width: 200,
+                        padding: const EdgeInsets.all(8.0),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(myfoods[i].title!),
-                            SizedBox(height: 5,),
-                            Text(myfoods[i].dec!),
-                            SizedBox(height: 5,),
-                            Text(myfoods[i].price!)],
-
-
+                            ClipRRect(
+                              child: Image.asset(myfoods[i].img!,
+                                  fit: BoxFit.cover),
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Card(
+                              elevation: 1,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      myfoods[i].title!,
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black87,
+                                      ),
+                                    ),
+                                    Text(
+                                      myfoods[i].dec!,
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black87,
+                                      ),
+                                    ),
+                                    Text(
+                                      myfoods[i].price!,
+                                      style: const TextStyle(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.deepPurple,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
                         ),
                       ),
-                    )
-                  ],
-                ),
-              );
-            }),
-          )
-        ],
+                    );
+                  }),
+            ),
+            Text(
+              "Lava ",
+              style: TextStyle(
+                  color: Colors.deepPurple,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 35),
+            ),
+            Container(
+              height: 350,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, i) {
+                    return Container(
+                      margin: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      width: 200,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ClipRRect(
+                            child:
+                                Image.asset(myfoods[i].img!, fit: BoxFit.cover),
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Card(
+                            elevation: 1,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    myfoods[i].title!,
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black87,
+                                    ),
+                                  ),
+                                  Text(
+                                    myfoods[i].dec!,
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black87,
+                                    ),
+                                  ),
+                                  Text(
+                                    myfoods[i].price!,
+                                    style: const TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.deepPurple,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  }),
+            ),
+          ],
+        ),
       ),
     );
   }

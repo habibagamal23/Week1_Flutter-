@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:weekone/MyHome.dart';
+import 'package:weekone/login.dart';
 
-import 'stackview.dart';
-import 'test.dart';
+import 'detailes.dart';
 import 'wlcomscreen.dart';
-
 
 void main() {
   runApp(MyApp());
@@ -17,10 +16,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:WelcomeScreen(),
+      home: WelcomeScreen(),
       routes: {
-        "/home": (context)=> Myhome(),
-        '/detailes': (context)=> Test(),
+        "/home": (context) => Myhome(),
+        '/welcome': (context) => WelcomeScreen(),
+        '/login': (context) => LoginScreen(),
+        '/detailes': (context) => FoodDetailsScreen()
       },
     );
   }

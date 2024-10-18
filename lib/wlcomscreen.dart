@@ -14,7 +14,7 @@ class WelcomeScreen extends StatelessWidget {
             flex: 2,
             child: Image.asset('assets/log.jpg'),
           ),
-          Column(
+         const Column(
             children: const [
               Text(
                 'Hello',
@@ -40,7 +40,7 @@ class WelcomeScreen extends StatelessWidget {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/home');
+                  Navigator.pushNamed(context, '/login');
                 },
                 style: ElevatedButton.styleFrom(
                   padding:
