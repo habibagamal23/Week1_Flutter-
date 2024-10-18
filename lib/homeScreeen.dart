@@ -1,27 +1,29 @@
 import 'package:flutter/material.dart';
 
+import 'detaiels_screen.dart';
+
 class EcommerceHome extends StatelessWidget {
   final List<Food> foodItems = const [
     Food(
-      imagePath: 'assets/s.jpg',
+      imagePath: 'assets/OIP.jpg',
       foodName: 'Burger',
       foodDescription: 'A tasty and delicious burger.',
       price: '200\$',
     ),
     Food(
-      imagePath: 'assets/ch.jpg',
+      imagePath: 'assets/OIP.jpg',
       foodName: 'Pizza',
       foodDescription: 'A hot and cheesy pizza.',
       price: '250\$',
     ),
     Food(
-      imagePath: 'assets/b.jpg',
+      imagePath: 'assets/OIP.jpg',
       foodName: 'Sandwich',
       foodDescription: 'A healthy and filling sandwich.',
       price: '150\$',
     ),
     Food(
-      imagePath: 'assets/b.jpg',
+      imagePath: 'assets/OIP.jpg',
       foodName: 'Salad',
       foodDescription: 'A fresh and healthy salad.',
       price: '100\$',
@@ -31,9 +33,8 @@ class EcommerceHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
-        backgroundColor:  Colors.deepPurple,
+        backgroundColor: Colors.deepPurple,
         elevation: 0,
         toolbarHeight: 80,
         actions: [
@@ -44,11 +45,13 @@ class EcommerceHome extends StatelessWidget {
             ),
           ),
           IconButton(
-            icon: const Icon(Icons.notifications_none_outlined, color: Colors.black),
+            icon: const Icon(Icons.notifications_none_outlined,
+                color: Colors.black),
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('This is a notif!'))
-              );
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(
+                content: Text('This is a notif!'),
+                backgroundColor: Colors.green,));
             },
           ),
         ],
@@ -57,11 +60,9 @@ class EcommerceHome extends StatelessWidget {
         backgroundColor: Colors.white,
         child: ListView(
           padding: EdgeInsets.zero,
-
           children: [
             DrawerHeader(
-              decoration:
-              BoxDecoration(color: Colors.deepPurple),
+              decoration: BoxDecoration(color: Colors.deepPurple),
               child: Column(
                 children: const [
                   CircleAvatar(
@@ -78,7 +79,6 @@ class EcommerceHome extends StatelessWidget {
             ),
             ListTile(
               title: const Text('Home'),
-
             ),
             ListTile(
               title: const Text('Cart'),
@@ -90,8 +90,7 @@ class EcommerceHome extends StatelessWidget {
             ),
           ],
         ),
-      )
-      ,
+      ),
       // body (1-colum Text Text sizedBox )
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -100,51 +99,53 @@ class EcommerceHome extends StatelessWidget {
           children: [
             const Text(
               "Welcome, Mohamed",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black87),
+              style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87),
             ),
-
             const Text(
               "Choose Your Favourite Food",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black26),
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black26),
             ),
             const Text(
               "Cova",
-              style: TextStyle(fontSize: 25,
+              style: TextStyle(
+                  fontSize: 25,
                   fontWeight: FontWeight.bold,
-                  color:  Colors.deepPurple),
+                  color: Colors.deepPurple),
             ),
-
             const SizedBox(height: 15),
             Container(
               height: 230,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children:  [
+                children: [
                   FoodItem(
-                    food: foodItems[0] ,
+                    food: foodItems[0],
                   ),
                   SizedBox(width: 15),
                   FoodItem(
-                    food: foodItems[1] ,
+                    food: foodItems[1],
                   ),
                   SizedBox(width: 15),
-                  FoodItem(
-                      food: foodItems[2]
-                  ),
+                  FoodItem(food: foodItems[2]),
                   SizedBox(width: 15),
-                  FoodItem(
-                      food: foodItems[3]
-                  ),
+                  FoodItem(food: foodItems[3]),
                 ],
               ),
             ),
             const SizedBox(height: 8),
             const Text(
               "Lava",
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,
-                  color:  Colors.deepPurple),
+              style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.deepPurple),
             ),
-
             const SizedBox(height: 15),
             Container(
               height: 230,
@@ -162,15 +163,21 @@ class EcommerceHome extends StatelessWidget {
                 },
               ),
             ),
-
             const SizedBox(height: 20),
             Center(
               child: ElevatedButton(
                 onPressed: () {},
-                child: const Text("Go to Cart" ,style:  TextStyle(fontSize: 16, fontWeight: FontWeight.bold , color: Colors.white), ),
+                child: const Text(
+                  "Go to Cart",
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor:  Colors.deepPurple,
-                  padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 10),
+                  backgroundColor: Colors.deepPurple,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 70, vertical: 10),
                 ),
               ),
             ),
@@ -180,7 +187,6 @@ class EcommerceHome extends StatelessWidget {
     );
   }
 }
-
 
 class Food {
   final String imagePath;
@@ -195,6 +201,7 @@ class Food {
     required this.price,
   });
 }
+
 class FoodItem extends StatelessWidget {
   final Food food;
 
@@ -202,66 +209,70 @@ class FoodItem extends StatelessWidget {
     required this.food,
   });
 
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-
-      ),
-      width: 200,
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.asset(food.imagePath, fit: BoxFit.cover),
-            ),
-          ),
-          const SizedBox(height: 5),
-          Card(
-            elevation: 1,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  Text(
-                    food.foodName,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
-                    ),
-                  ),
-
-                  Text(
-                    food.foodDescription,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.grey[700],
-                    ),
-                  ),
-
-                  Text(
-                    food.price,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color:  Colors.deepPurple,
-                    ),
-                  ),
-                ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => FoodDetailsScreen(food: food)));
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
+        ),
+        width: 200,
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Image.asset(food.imagePath, fit: BoxFit.cover),
               ),
             ),
-          ),
-        ],
+            const SizedBox(height: 5),
+            Card(
+              elevation: 1,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Text(
+                      food.foodName,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    Text(
+                      food.foodDescription,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey[700],
+                      ),
+                    ),
+                    Text(
+                      food.price,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.deepPurple,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

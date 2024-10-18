@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:weekone/homeScreeen.dart';
 
+import 'Auth/loginscreen.dart';
+
 class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class WelcomeScreen extends StatelessWidget {
           children: [
             Expanded(
               flex: 2,
-              child: Image.asset('assets/illustration.png'),
+              child: Image.asset('assets/OIP.jpg'),
             ),
             Column(
               children: const [
@@ -42,11 +44,8 @@ class WelcomeScreen extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => EcommerceHome()));
-
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()));
                   },
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(
@@ -97,7 +96,11 @@ class WelcomeScreen extends StatelessWidget {
                   onPressed: () {},
                 ),
                 IconButton(
-                  icon: Image.asset('assets/images/linkedin.png'),
+                  icon: Image.asset(
+                    'assets/OIP.jpg',
+                    width: 10,
+                    height: 10,
+                  ),
                   iconSize: 30,
                   onPressed: () {},
                 )
